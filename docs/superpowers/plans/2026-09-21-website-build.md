@@ -940,7 +940,21 @@ Work through `python3 scripts/check.py --launch` until it prints `OK`. Specifica
 - Replace `REPLACE_DOMAIN`, `REPLACE_EMAIL`, `REPLACE_LINKEDIN_URL`.
 - Fill in her offers, story, pricing, FAQ answers and accreditation wording.
 - Swap `placeholder-portrait.svg` for her photos (compress to under 200 KB each, keep `width`/`height`, update `alt`); add `images/share.jpg`.
-- If she has 2-3 real quotes, fill in `#testimonials` and remove its `hidden` attribute.
+- If she has 2-3 real quotes, uncomment the two blockquotes in `#testimonials`, fill them in and remove the section's `hidden` attribute. If she has none, leave it as is: launch mode ignores commented-out content, so `--launch` can still print OK.
+
+Carried over from the final whole-branch review (do these in this task):
+- **Booking without JavaScript:** put the real Calendly URL directly in the HTML `href` of every `.js-book` link (index.html x4, thank-you.html x2) and keep `js/main.js` as the click handler only. The button inside `#final-cta` currently links to itself until this is done.
+- **"20 minutes" must match Calendly:** the copy says 20 minutes in three places in `index.html` (hero note, how-it-works step 2, final call-to-action). Confirm the Calendly discovery-call event length and change the copy if it differs.
+- **GHL embed and privacy notice:** read the embed code before pasting it. If it loads a third-party script or sets cookies on page load, either defer it behind a click (as Calendly is) or add consent. Then update `privacy.html` to cover it, add data retention periods, and mention that the host (Cloudflare or Netlify) logs IP addresses.
+- **`--launch` false positives:** if the GHL embed contains inline JS or CSS with square brackets, `python3 scripts/check.py --launch` may flag them. Exclude that block from the scan rather than editing the embed.
+- **Fill in** `privacy.html` `[date]`; replace the whole LinkedIn href with her real profile URL.
+- **Favicon:** add one with her brand mark (currently every visit requests a missing `/favicon.ico`).
+- **`privacy.html` noindex:** decide whether to keep it. The thank-you page should stay noindex. If privacy is made indexable, add it to `sitemap.xml`.
+- **thank-you.html** has no footer, so it offers no path to the privacy notice. Add a small footer link.
+- **Hero image:** when the real photo replaces the SVG, add `fetchpriority="high"` to the hero `<img>` and keep it non-lazy.
+- **Confirm the hero claim** "from someone who has made the leap" with Claire before launch.
+- **Keyboard check:** tab through the whole page once (header, buttons, FAQ summaries, form) and confirm focus is always visible.
+- **About photo alignment:** on phones the About photo is left-aligned while the hero photo is centred; look at it with the real photo and centre it if it looks off.
 
 - [ ] **Step 2: End-to-end tests on real devices**
 
