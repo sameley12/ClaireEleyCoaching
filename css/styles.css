@@ -129,6 +129,7 @@ details p { margin: .75rem 0 0; color: var(--muted); }
 [hidden] { display: none !important; }
 
 .cta { background: var(--sand); text-align: center; }
+.cta .lead { color: var(--ink); }
 .cta .narrow { margin-inline: auto; }
 .magnet { background: var(--cream); border-radius: var(--radius); padding: 1.75rem; margin-top: 2.5rem; text-align: left; }
 .form-slot { margin-top: 1rem; }
