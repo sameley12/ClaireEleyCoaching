@@ -107,3 +107,23 @@ p { margin: 0 0 1em; }
   .cards { grid-template-columns: repeat(3, 1fr); }
   .steps { grid-template-columns: repeat(3, 1fr); }
 }
+
+.about { display: grid; gap: 2rem; align-items: center; }
+.about__photo { max-width: 280px; }
+.credential { color: var(--muted); font-size: .95rem; border-left: 3px solid var(--sand); padding-left: 1rem; }
+
+.quote { margin: 0; background: var(--cream); border-radius: var(--radius); padding: 1.75rem; font-family: var(--serif); font-size: 1.1rem; }
+.quote footer { font-family: var(--sans); font-size: .9rem; color: var(--muted); margin-top: .75rem; }
+
+details { border-bottom: 1px solid var(--sand); padding: 1rem 0; }
+summary { cursor: pointer; font-weight: 600; list-style: none; padding-right: 2rem; position: relative; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 0; color: var(--terracotta); font-size: 1.4rem; line-height: 1; }
+details[open] summary::after { content: "–"; }
+details p { margin: .75rem 0 0; color: var(--muted); }
+
+@media (min-width: 800px) {
+  .about { grid-template-columns: 1fr 1.6fr; gap: 4rem; }
+}
+
+[hidden] { display: none !important; }
