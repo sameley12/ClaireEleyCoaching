@@ -82,3 +82,28 @@ p { margin: 0 0 1em; }
   .hero__inner { grid-template-columns: 1.3fr 1fr; gap: 4rem; }
   .hero__photo { order: 0; max-width: none; }
 }
+
+.narrow { max-width: 720px; }
+.ticks { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+.ticks li { padding-left: 2rem; position: relative; margin-bottom: .8rem; }
+.ticks li::before { content: "✓"; position: absolute; left: 0; color: var(--terracotta); font-weight: 700; }
+
+.cards { display: grid; gap: 1.25rem; margin: 2rem 0 1.5rem; }
+.card { background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius); padding: 1.75rem; }
+.card__outcome { font-family: var(--serif); font-size: 1.1rem; }
+.card__meta { color: var(--muted); font-size: .95rem; margin: 0; }
+.price-note { color: var(--muted); }
+
+.steps { list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: 1.5rem; counter-reset: step; }
+.steps li { position: relative; padding-left: 3.5rem; counter-increment: step; }
+.steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 0;
+  width: 2.5rem; height: 2.5rem; border-radius: 50%;
+  background: var(--terracotta); color: var(--white);
+  display: grid; place-items: center; font-family: var(--serif); font-size: 1.2rem;
+}
+
+@media (min-width: 800px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+  .steps { grid-template-columns: repeat(3, 1fr); }
+}
