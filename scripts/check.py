@@ -14,7 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 PAGES = ["index.html", "privacy.html", "thank-you.html"]
 LAUNCH_FILES = PAGES + ["js/main.js", "robots.txt", "sitemap.xml"]
 EXTERNAL = ("http://", "https://", "mailto:", "tel:", "javascript:", "//")
-PLACEHOLDER = re.compile(r"REPLACE_[A-Z_]+|\[[A-Za-z][^\]\n]*\]")
+PLACEHOLDER = re.compile(r"REPLACE_[A-Z_]+|\[[^\]\n]{2,}\]")
 
 
 class Page(HTMLParser):
@@ -78,7 +78,8 @@ def check_launch():
     for name in LAUNCH_FILES:
         path = ROOT / name
         if path.exists():
-            for hit in sorted(set(PLACEHOLDER.findall(path.read_text(encoding="utf-8")))):
+            text = re.sub(r"<!--.*?-->", "", path.read_text(encoding="utf-8"), flags=re.DOTALL)
+            for hit in sorted(set(PLACEHOLDER.findall(text))):
                 errors.append("%s: unreplaced placeholder %s" % (name, hit))
     return errors
 
