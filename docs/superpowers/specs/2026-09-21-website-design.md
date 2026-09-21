@@ -37,7 +37,7 @@ A professional, seamless website for a new coaching and consulting practice that
 /privacy.html        Privacy and cookie notice
 /thank-you.html      Shown after lead-magnet signup
 /css/styles.css      All styling; colours and fonts as variables at top
-/js/main.js          Mobile menu, FAQ toggle, scroll behaviour
+/js/main.js          Booking pop-up loader (FAQ uses native <details>; mobile header collapses to logo and button)
 /images/             Optimised photos
 ```
 
