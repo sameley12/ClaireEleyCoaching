@@ -65,8 +65,12 @@ p { margin: 0 0 1em; }
   border-bottom: 1px solid var(--sand);
 }
 .site-header__inner { display: flex; align-items: center; justify-content: space-between; padding: .7rem 0; gap: 1rem; }
-.logo { font-family: var(--serif); font-size: 1.3rem; color: var(--ink); text-decoration: none; }
-.logo img { height: 50px; width: auto; display: block; }
+.logo {
+  font-family: var(--serif); text-decoration: none; color: var(--terracotta);
+  line-height: 1; display: inline-flex; flex-direction: column; gap: .28em;
+}
+.logo__name { font-size: 1.55rem; }
+.logo__sub { font-family: var(--sans); font-size: .62rem; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); }
 .site-nav { display: none; }
 .site-nav a { color: var(--muted); text-decoration: none; margin-right: 1.5rem; }
 .site-nav a:hover { color: var(--terracotta-dark); }
